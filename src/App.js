@@ -5,6 +5,7 @@ import RecipeList from "./RecipeList";
 import NewRecipeForm from "./NewRecipeForm";
 import NewListForm from "./NewListForm";
 import List from "./List";
+import Navbar from "./Navbar";
 
 function App() {
   const savedRecipes = JSON.parse(window.localStorage.getItem("recipes"));
@@ -54,6 +55,7 @@ function App() {
   }, [lists]);
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route
           exact
