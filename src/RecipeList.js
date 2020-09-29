@@ -1,17 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Recipe from "./Recipe";
+import RecipeCard from "./RecipeCard";
 
-const List = ({ title, recipes, deleteRecipe }) => {
+const RecipeList = ({ title, recipes, deleteMethod, lists, addToList }) => {
   return (
     <div>
       <h1>{title}</h1>
       <Link to="/recipe/new">New Recipe</Link>
+      <Link to="/lists/new">New Grocery List</Link>
       {recipes.map((recipe) => (
-        <Recipe key={recipe.id} recipe={recipe} deleteRecipe={deleteRecipe} />
+        <RecipeCard
+          key={recipe.id}
+          recipe={recipe}
+          deleteMethod={deleteMethod}
+          lists={lists}
+          addMethod={addToList}
+        />
       ))}
     </div>
   );
 };
 
-export default List;
+export default RecipeList;

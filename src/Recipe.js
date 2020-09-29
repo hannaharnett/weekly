@@ -1,9 +1,14 @@
 import React from "react";
+import AddToListDropdown from "./AddToListDropdown";
 
 const Recipe = (props) => {
   const { id, title, ingredients, servings } = props.recipe;
   const handleDelete = () => {
     props.deleteRecipe(id);
+  };
+
+  const handleClick = (e) => {
+    props.addToList(e.currentTarget.dataset.id, props.recipe);
   };
   return (
     <div className="recipe-container">
@@ -16,6 +21,12 @@ const Recipe = (props) => {
       </ul>
 
       <button onClick={handleDelete}>Delete</button>
+
+      <AddToListDropdown
+        activatorText="Add to list"
+        items={props.lists}
+        onClick={handleClick}
+      />
     </div>
   );
 };

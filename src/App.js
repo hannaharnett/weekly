@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Dashboard from "./Dashboard";
 import RecipeList from "./RecipeList";
 import NewRecipeForm from "./NewRecipeForm";
+import NewListForm from "./NewListForm";
+import List from "./List";
 
 function App() {
   const savedRecipes = JSON.parse(window.localStorage.getItem("recipes"));
   const [recipes, setRecipes] = useState(savedRecipes || []);
+  const savedLists = JSON.parse(window.localStorage.getItem("lists"));
+  const [lists, setLists] = useState(savedLists || []);
 
+  const findList = (id) => {
+    return lists.find((list) => {
+      return list.id === id;
+    });
+  };
   const saveRecipe = (newRecipe) => {
     setRecipes([...recipes, newRecipe]);
   };
@@ -15,22 +25,51 @@ function App() {
     setRecipes((prevState) => prevState.filter((recipe) => recipe.id !== id));
   };
 
-  const syncLocalStorage = () => {
+  const saveList = (newList) => {
+    setLists([...lists, newList]);
+  };
+  const deleteList = (id) => {
+    setLists((prevState) => prevState.filter((list) => list.id !== id));
+  };
+
+  const addToList = (id, recipe) => {
+    const list = findList(id);
+    list.recipes.push(recipe);
+    syncLSLists();
+  };
+
+  const syncLSRecipes = () => {
     window.localStorage.setItem("recipes", JSON.stringify(recipes));
   };
 
-  useEffect(syncLocalStorage, [recipes]);
+  const syncLSLists = () => {
+    window.localStorage.setItem("lists", JSON.stringify(lists));
+  };
+
+  useEffect(() => {
+    syncLSRecipes();
+  }, [recipes]);
+  useEffect(() => {
+    syncLSLists();
+  }, [lists]);
   return (
     <BrowserRouter>
       <Switch>
         <Route
           exact
           path="/"
+          render={(routeProps) => <Dashboard lists={lists} {...routeProps} />}
+        />
+
+        <Route
+          path="/recipes"
           render={(routeProps) => (
             <RecipeList
               title="Recipes"
               recipes={recipes}
-              deleteRecipe={deleteRecipe}
+              deleteMethod={deleteRecipe}
+              lists={lists}
+              addToList={addToList}
               {...routeProps}
             />
           )}
@@ -40,6 +79,25 @@ function App() {
           path="/recipe/new"
           render={(routeProps) => (
             <NewRecipeForm saveRecipe={saveRecipe} {...routeProps} />
+          )}
+        />
+
+        <Route
+          path="/lists/new"
+          render={(routeProps) => (
+            <NewListForm saveList={saveList} {...routeProps} />
+          )}
+        />
+
+        <Route
+          path="/lists/:id"
+          render={(routeProps) => (
+            <List
+              list={findList(routeProps.match.params.id)}
+              lists={lists}
+              deleteList={deleteList}
+              {...routeProps}
+            />
           )}
         />
       </Switch>
