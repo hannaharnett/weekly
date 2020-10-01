@@ -1,0 +1,49 @@
+@import "./_colors";
+
+nav {
+  height: 100px;
+  margin: 5%;
+  background-color: $lightNude;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  h1 {
+    font-size: 2.5rem;
+  }
+  a {
+    color: $darkFont;
+    font-size: 1.1rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin-left: 25px;
+    margin-top: 8px;
+    background-size: 200% 200%;
+    background-image: linear-gradient(to top, $orange 50%, transparent 50%);
+    -webkit-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -moz-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -ms-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -o-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    &:hover {
+      color: white;
+      cursor: pointer;
+      background-image: linear-gradient(to top, $orange 51%, transparent 50%);
+      background-position: 0 100%;
+      -webkit-transition: background-position 200ms, color 200ms ease,
+        border-color 200ms ease;
+      -moz-transition: background-position 200ms, color 200ms ease,
+        border-color 200ms ease;
+      -ms-transition: background-position 200ms, color 200ms ease,
+        border-color 200ms ease;
+      -o-transition: background-position 200ms, color 200ms ease,
+        border-color 200ms ease;
+      transition: background-position 200ms, color 200ms ease,
+        border-color 200ms ease;
+    }
+  }
+}
