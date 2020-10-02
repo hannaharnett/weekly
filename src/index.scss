@@ -1,5 +1,5 @@
 @import "_colors";
-@import "_grid";
+@import "_breakpointMixins";
 
 * {
   box-sizing: border-box;
@@ -7,10 +7,17 @@
   padding: 0;
 }
 
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   height: 100%;
   background: linear-gradient(90deg, $nude 50%, #fff 50%);
+  @include md {
+    background: $nude;
+  }
   color: $darkFont;
 }
 
