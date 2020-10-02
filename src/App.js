@@ -6,6 +6,9 @@ import NewRecipeForm from "./NewRecipeForm";
 import NewListForm from "./NewListForm";
 import List from "./List";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+import "./app.scss";
 
 function App() {
   const savedRecipes = JSON.parse(window.localStorage.getItem("recipes"));
@@ -103,6 +106,7 @@ function App() {
           )}
         />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
