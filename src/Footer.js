@@ -6,7 +6,7 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <footer>
-      <ul>
+      <ul className="footer-ul">
         <li>
           <Link to="#">about</Link>
         </li>
