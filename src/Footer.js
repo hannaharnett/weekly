@@ -17,9 +17,27 @@ const Footer = () => {
           <Link to="#">blog</Link>
         </li>
       </ul>
-      <div>
-        <h4>weekly</h4>
+      <div className="footer-credits">
+        <h3 className="footer-logo">weekly</h3>
         <p>by Hannah Arnett</p>
+        <p>
+          Icons by{" "}
+          <a
+            href="https://icons8.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-describedby="new-window"
+          >
+            icons8.com
+            <img
+              src="https://img.icons8.com/material-rounded/18/000000/external-link.png"
+              alt=""
+            />
+          </a>
+          <span className="visually-hidden" id="new-window">
+            Opens in a new window
+          </span>
+        </p>
       </div>
     </footer>
   );
