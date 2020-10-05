@@ -1,22 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Illustration from "./illustrations/paperlist.png";
 
-const Dashboard = (props) => {
+import "./dashboard.scss";
+
+const Dashboard = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <Link to="/recipe/new">New Recipe</Link>
-      <br />
-      <Link to="/lists/new">New Grocery List</Link>
-      <br />
-      {props.lists.map((list) => (
-        <h3>
-          <Link key={list.id} to={`/lists/${list.id}`}>
-            {list.title} - {list.recipes.length}
-          </Link>
-          <br />
-        </h3>
-      ))}
+    <div className="dashboard">
+      <div className="dash-half-image">
+        <img src={Illustration} alt="woman making shopping list" />
+      </div>
+      <div className="dash-half-text">
+        <h2>
+          Save <br /> Time
+        </h2>
+        <p>
+          Save your recipes in lists to easily create a <i>weekly</i> shopping
+          list. Save time and avoid stress. <br />
+          Try weekly.
+        </p>
+      </div>
     </div>
   );
 };
