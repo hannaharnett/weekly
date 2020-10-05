@@ -58,6 +58,9 @@ footer {
   }
   .footer-credits {
     text-align: right;
+    @include sm {
+      text-align: center;
+    }
     a {
       @extend .hover;
       text-decoration: none;
