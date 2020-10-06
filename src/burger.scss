@@ -10,7 +10,7 @@
   z-index: 20;
   display: none;
 
-  @include sm {
+  @include respond-until(sm) {
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;

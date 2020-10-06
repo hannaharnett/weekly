@@ -10,7 +10,7 @@ ul.burger-ul {
     padding: 20px 10px 15px 10px;
   }
 
-  @include sm {
+  @include respond-until(sm) {
     flex-flow: column nowrap;
     background-color: $purple;
     position: fixed;

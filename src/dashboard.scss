@@ -5,16 +5,16 @@
   display: flex;
   width: 100%;
   margin-bottom: 100px;
-  @include md {
+  @include respond-until(md) {
     flex-direction: column-reverse;
   }
   .dash-half-text,
   .dash-half-image {
     width: 50%;
-    @include md {
+    @include respond-until(md) {
       width: 100%;
     }
-    @include sm {
+    @include respond-until(sm) {
       padding: 30px;
     }
   }
@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @include md {
+  @include respond-until(md) {
     position: unset;
     height: 500px;
   }
@@ -38,7 +38,7 @@
     text-align: center;
     font-family: "Archivo Black", sans-serif;
     font-size: 6rem;
-    @include sm {
+    @include respond-until(sm) {
       font-size: 4rem;
     }
   }
@@ -46,7 +46,7 @@
     margin: 0 auto;
     width: 250px;
     font-size: 1.1rem;
-    @include sm {
+    @include respond-until(sm) {
       text-align: center;
       width: 210px;
     }
@@ -58,7 +58,7 @@
   text-align: center;
   img {
     width: 80%;
-    @include sm {
+    @include respond-until(sm) {
       width: 100%;
     }
   }
