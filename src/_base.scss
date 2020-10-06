@@ -1,0 +1,32 @@
+@import "_colors";
+
+.hover-links {
+  background-size: 200% 200%;
+  background-image: linear-gradient(to top, $orange 50%, transparent 50%);
+  -webkit-transition: background-position 200ms, color 200ms ease,
+    border-color 200ms ease;
+  -moz-transition: background-position 200ms, color 200ms ease,
+    border-color 200ms ease;
+  -ms-transition: background-position 200ms, color 200ms ease,
+    border-color 200ms ease;
+  -o-transition: background-position 200ms, color 200ms ease,
+    border-color 200ms ease;
+  transition: background-position 200ms, color 200ms ease,
+    border-color 200ms ease;
+  &:hover {
+    color: white;
+    cursor: pointer;
+    background-image: linear-gradient(to top, $orange 51%, transparent 50%);
+    background-position: 0 100%;
+    -webkit-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -moz-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -ms-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    -o-transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+    transition: background-position 200ms, color 200ms ease,
+      border-color 200ms ease;
+  }
+}

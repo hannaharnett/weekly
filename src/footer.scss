@@ -1,36 +1,5 @@
-@import "_colors";
+@import "_base";
 @import "_breakpointMixins";
-
-.hover {
-  background-size: 200% 200%;
-  background-image: linear-gradient(to top, $orange 50%, transparent 50%);
-  -webkit-transition: background-position 200ms, color 200ms ease,
-    border-color 200ms ease;
-  -moz-transition: background-position 200ms, color 200ms ease,
-    border-color 200ms ease;
-  -ms-transition: background-position 200ms, color 200ms ease,
-    border-color 200ms ease;
-  -o-transition: background-position 200ms, color 200ms ease,
-    border-color 200ms ease;
-  transition: background-position 200ms, color 200ms ease,
-    border-color 200ms ease;
-  &:hover {
-    color: white;
-    cursor: pointer;
-    background-image: linear-gradient(to top, $orange 51%, transparent 50%);
-    background-position: 0 100%;
-    -webkit-transition: background-position 200ms, color 200ms ease,
-      border-color 200ms ease;
-    -moz-transition: background-position 200ms, color 200ms ease,
-      border-color 200ms ease;
-    -ms-transition: background-position 200ms, color 200ms ease,
-      border-color 200ms ease;
-    -o-transition: background-position 200ms, color 200ms ease,
-      border-color 200ms ease;
-    transition: background-position 200ms, color 200ms ease,
-      border-color 200ms ease;
-  }
-}
 
 footer {
   display: flex;
@@ -48,7 +17,7 @@ footer {
   ul.footer-ul {
     list-style: none;
     li a {
-      @extend .hover;
+      @extend .hover-links;
       margin: 0 20px;
       font-family: "Archivo Black", sans-serif;
       font-size: 1.8rem;
@@ -62,7 +31,7 @@ footer {
       text-align: center;
     }
     a {
-      @extend .hover;
+      @extend .hover-links;
       text-decoration: none;
       color: $darkFont;
       display: inline-flex;
