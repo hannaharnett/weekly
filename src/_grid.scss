@@ -1,0 +1,25 @@
+@import "_breakpointMixins";
+
+@mixin gridGenerator($size, $grid-columns) {
+  @for $i from 1 through $grid-columns {
+    .col-#{$size}-#{$i}-#{$grid-columns} {
+      width: percentage($i / $grid-columns);
+    }
+  }
+}
+// 2560px
+@include respond-until(xl) {
+  @include gridGenerator(xl, 12);
+}
+// 1440px
+@include respond-until(lg) {
+  @include gridGenerator(lg, 12);
+}
+// 950px
+@include respond-until(md) {
+  @include gridGenerator(md, 12);
+}
+// 500px
+@include respond-until(sm) {
+  @include gridGenerator(sm, 12);
+}
