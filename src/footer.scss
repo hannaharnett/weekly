@@ -5,6 +5,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  letter-spacing: 1px;
   height: 200px;
   background-color: $pink;
   margin-top: 5%;
@@ -27,6 +28,7 @@ footer {
   }
   .footer-credits {
     text-align: right;
+    font-size: 1.1rem;
     @include respond-until(sm) {
       text-align: center;
     }
@@ -43,7 +45,7 @@ footer {
     }
 
     .footer-logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-family: "Archivo Black", sans-serif;
     }
   }
