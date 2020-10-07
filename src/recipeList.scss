@@ -1,0 +1,7 @@
+@import "_colors";
+
+.recipe-list-ul {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $orange;
+}
