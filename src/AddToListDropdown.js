@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const AddToListDropdown = ({
-  activatorText = "Dropdown",
-  items = [],
-  onClick,
-}) => {
+import "./addToListDropdown.scss";
+
+const AddToListDropdown = ({ activatorText = "•••", items = [], onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const activatorRef = useRef(null);
   const dropdownListRef = useRef(null);
@@ -41,19 +39,25 @@ const AddToListDropdown = ({
     [isOpen]
   );
   return (
-    <div onKeyUp={keyHandler}>
+    <div className="dropdown-wrap" onKeyUp={keyHandler}>
+      <label htmlFor="dropdown-button" className="visually-hidden">
+        More options
+      </label>
       <button
+        id="dropdown-button"
+        className="dropdown-button"
         aria-expanded={isOpen ? "true" : "false"}
         onClick={clickHandler}
         ref={activatorRef}
       >
-        {activatorText}
+        <span>{activatorText}</span>
       </button>
       {isOpen && (
-        <ul ref={dropdownListRef} role="list">
+        <ul className="dropdown-ul" ref={dropdownListRef} role="list">
+          <li className="dropdown-item">Add to a list:</li>
           {items.map((item, index) => {
             return (
-              <li key={index} onClick={clickHandler}>
+              <li key={index} onClick={clickHandler} className="dropdown-item">
                 <button onClick={onClick} data-id={item.id}>
                   {item.title}
                 </button>
