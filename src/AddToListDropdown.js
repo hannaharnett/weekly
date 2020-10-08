@@ -11,8 +11,26 @@ const AddToListDropdown = ({ activatorText = "•••", items = [], onClick })
     setIsOpen(!isOpen);
   };
   const keyHandler = (e) => {
+    const focusableElem = dropdownListRef.current.querySelectorAll("button");
+    // create array from node list
+    const focusable = [...focusableElem];
+    // index of current elem
+    const index = focusable.indexOf(document.activeElement);
+    let nextIndex = 0;
+
     if (e.key === "Escape" && isOpen) {
       setIsOpen(false);
+    }
+    if (e.keyCode === 38) {
+      // up arrow
+      e.preventDefault();
+      nextIndex = index > 0 ? index - 1 : 0;
+      focusableElem[nextIndex].focus();
+    } else if (e.keyCode === 40) {
+      // down arrow
+      e.preventDefault();
+      nextIndex = index + 1 < focusable.length ? index + 1 : index;
+      focusableElem[nextIndex].focus();
     }
   };
   const clickOutsideHandler = (e) => {
@@ -39,7 +57,7 @@ const AddToListDropdown = ({ activatorText = "•••", items = [], onClick })
     [isOpen]
   );
   return (
-    <div className="dropdown-wrap" onKeyUp={keyHandler}>
+    <div className="dropdown-wrap">
       <label htmlFor="dropdown-button" className="visually-hidden">
         More options
       </label>
@@ -53,7 +71,12 @@ const AddToListDropdown = ({ activatorText = "•••", items = [], onClick })
         <span>{activatorText}</span>
       </button>
       {isOpen && (
-        <ul className="dropdown-ul" ref={dropdownListRef} role="list">
+        <ul
+          className="dropdown-ul"
+          ref={dropdownListRef}
+          role="list"
+          onKeyDown={keyHandler}
+        >
           <li className="dropdown-item">Add to a list:</li>
           {items.map((item, index) => {
             return (
