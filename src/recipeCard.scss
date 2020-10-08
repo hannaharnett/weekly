@@ -1,0 +1,30 @@
+@import "_base";
+@import "_breakpointMixins";
+
+.recipe-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 55px;
+  @include respond-until(md) {
+    justify-content: space-between;
+    padding: 20px 55px;
+  }
+  @include respond-until(sm) {
+    padding: 20px 30px;
+  }
+}
+
+.recipe-title {
+  @extend .hover-links;
+  background-image: linear-gradient(to top, $purple 50%, transparent 50%);
+  font-size: 3.5rem;
+  color: $darkFont;
+  text-decoration: underline;
+  @include respond-until(md) {
+    font-size: 2.2rem;
+  }
+  &:hover {
+    color: white;
+    background-image: linear-gradient(to top, $purple 51%, transparent 50%);
+  }
+}

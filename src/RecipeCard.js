@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import AddToListDropdown from "./AddToListDropdown";
+
+import "./recipeCard.scss";
 
 const RecipeCard = (props) => {
   const { title, id } = props.recipe;
@@ -7,19 +10,12 @@ const RecipeCard = (props) => {
     props.addMethod(e.currentTarget.dataset.id, props.recipe);
   };
   return (
-    <div>
-      <h1>{title}</h1>
-      <AddToListDropdown
-        activatorText="Add to list"
-        items={props.lists}
-        onClick={addHandler}
-      />
-      {props.deleteMethod && (
-        <button onClick={props.deleteMethod} data-id={id}>
-          Delete
-        </button>
-      )}
-    </div>
+    <li className="recipe-card col-sm-12-12 col-md-6-12 col-lg-4-12 col-xl-3-12">
+      <Link to={`/recipe/${id}`}>
+        <h2 className="recipe-title">{title}</h2>
+      </Link>
+      <AddToListDropdown items={props.lists} onClick={addHandler} />
+    </li>
   );
 };
 
