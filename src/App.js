@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard";
 import RecipeList from "./RecipeList";
 import NewRecipeForm from "./NewRecipeForm";
 import NewListForm from "./NewListForm";
+import Lists from "./Lists";
 import List from "./List";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -88,14 +89,19 @@ function App() {
         />
 
         <Route
-          path="/lists/new"
+          path="/lists"
+          render={(routeProps) => <Lists lists={lists} {...routeProps} />}
+        />
+
+        <Route
+          path="/list/new"
           render={(routeProps) => (
             <NewListForm saveList={saveList} {...routeProps} />
           )}
         />
 
         <Route
-          path="/lists/:id"
+          path="/list/:id"
           render={(routeProps) => (
             <List
               list={findList(routeProps.match.params.id)}
