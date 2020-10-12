@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useInput from "./hooks/input-hook";
 
 const Ingredients = ({ getIngredients }) => {
@@ -10,6 +10,7 @@ const Ingredients = ({ getIngredients }) => {
   } = useInput("");
   const { value: qty, set: setQty, reset: reserQty } = useInput("");
   const { value: unit, set: setUnit, reset: resetUnit } = useInput("");
+  const formRef = useRef();
 
   const addIngredient = (e) => {
     e.preventDefault();
@@ -20,6 +21,15 @@ const Ingredients = ({ getIngredients }) => {
     resetIngredient();
     reserQty();
     resetUnit();
+
+    formRef.current.querySelector("input").focus();
+  };
+
+  const removeIngredient = (id) => {
+    const newList = ingredients.filter((item) => item.name !== id);
+
+    setIngredients(newList);
+    formRef.current.querySelector("input").focus();
   };
 
   useEffect(() => {
@@ -27,29 +37,52 @@ const Ingredients = ({ getIngredients }) => {
   });
 
   return (
-    <form onSubmit={addIngredient}>
-      <h2>Ingredients</h2>
-      <label htmlFor="ingredient">
-        Ingredient
-        <br />
-        <label>
-          Name
-          <input type="text" {...setIngredient} />
+    <div className="ing-container">
+      <form onSubmit={addIngredient} ref={formRef} id="add-ing-info">
+        <label className="visually-hidden" htmlFor="add-ing-info">
+          Add ingredient information
         </label>
-        <label>
+        <br />
+        <label className="ing-label">
+          Name of ingredient
+          <br /> <input type="text" {...setIngredient} />
+        </label>
+        <br />
+        <label className="ing-label">
           Quantity
+          <br />
           <input type="text" {...setQty} />
         </label>
-        <label>
+        <br />
+        <label className="ing-label">
           Unit
+          <br />
           <input type="text" {...setUnit} />
         </label>
-        <button type="submit">Add</button>
-      </label>
-      {ingredients.map(({ name, qty, unit }) => (
-        <p key={name}>{`${qty} ${unit} ${name}`}</p>
-      ))}
-    </form>
+        <br />
+        <label className="visually-hidden" htmlFor="add-ing-btn">
+          Add ingredient to recipe
+        </label>
+        <br />
+        <button id="add-ing-btn" type="submit">
+          +
+        </button>
+      </form>
+      <div className="ing-list">
+        <h4>Ingredients:</h4>
+        {ingredients.map(({ name, qty, unit }) => (
+          <p key={name}>
+            <label htmlFor="remove-ing" className="visually-hidden">
+              {`Remove ${name} from ingredient list`}
+            </label>
+            <button id="remove-ing" onClick={() => removeIngredient(name)}>
+              -
+            </button>
+            {`${qty} ${unit} ${name}`}{" "}
+          </p>
+        ))}
+      </div>
+    </div>
   );
 };
 
