@@ -1,0 +1,24 @@
+@import "_base";
+@import "_breakpointMixins";
+
+.page-header {
+  border-bottom: 5px solid $lightNude;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 55px;
+  @include respond-until(sm) {
+    padding: 20px 30px;
+    .btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .page-header-title {
+      font-size: 2.2rem;
+    }
+  }
+}
+.page-header-title {
+  font-size: 4rem;
+  color: $darkFont;
+}

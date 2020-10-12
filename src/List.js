@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import PageHeader from "./PageHeader";
 
 import "./list.scss";
 
@@ -15,7 +16,7 @@ const List = (props) => {
   const generateShoppingList = () => {
     let ingredients = [];
     list.recipes.map((recipe) => {
-      ingredients.push(...recipe.ingredients);
+      return ingredients.push(...recipe.ingredients);
     });
 
     setShoppingList(ingredients);
@@ -27,9 +28,9 @@ const List = (props) => {
   }, [shoppingList]);
   return (
     <div className="list-container">
-      <div className="list-nav">
-        <h2 className="list-title">{list.title}</h2>
-        <div className="list-btn-wrap">
+      <PageHeader>
+        <h2 className="page-header-title">{list.title}</h2>
+        <div className="btn-wrap">
           <button onClick={deleteHandler} className="list-btn">
             Delete List
           </button>
@@ -39,7 +40,7 @@ const List = (props) => {
             </button>
           )}
         </div>
-      </div>
+      </PageHeader>
       <div className="list-content">
         {list.recipes.length > 0 ? (
           <ul className="list-ul">

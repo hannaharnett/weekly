@@ -19,27 +19,6 @@
 
 .list-container {
   background-color: $orange;
-  .list-nav {
-    border-bottom: 5px solid $lightNude;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 55px;
-    @include respond-until(sm) {
-      padding: 20px 30px;
-      .list-btn-wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .list-title {
-        font-size: 2.2rem;
-      }
-    }
-  }
-  .list-title {
-    font-size: 4rem;
-    color: $darkFont;
-  }
 }
 
 .list-content {
