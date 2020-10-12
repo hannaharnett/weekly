@@ -11,7 +11,15 @@ const RecipeCard = (props) => {
   };
   return (
     <li className="recipe-card col-sm-12-12 col-md-6-12 col-lg-4-12 col-xl-3-12">
-      <Link to={`/recipe/${id}`}>
+      <Link
+        to={{
+          pathname: `/recipe/${id}`,
+          state: {
+            recipe: props.recipe,
+            lists: props.lists,
+          },
+        }}
+      >
         <h2 className="recipe-title">{title}</h2>
       </Link>
       <AddToListDropdown items={props.lists} onClick={addHandler} />

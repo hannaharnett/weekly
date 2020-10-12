@@ -8,6 +8,7 @@ import Lists from "./Lists";
 import List from "./List";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Recipe from "./Recipe";
 
 import "./app.scss";
 
@@ -85,6 +86,17 @@ function App() {
           path="/recipe/new"
           render={(routeProps) => (
             <NewRecipeForm saveRecipe={saveRecipe} {...routeProps} />
+          )}
+        />
+
+        <Route
+          path="/recipe/:id"
+          render={(routeProps) => (
+            <Recipe
+              addToList={addToList}
+              deleteRecipe={deleteRecipe}
+              {...routeProps}
+            />
           )}
         />
 
