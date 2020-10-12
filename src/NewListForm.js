@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import PageHeader from "./PageHeader";
+
+import "./newListForm.scss";
 
 const NewGroceryListForm = (props) => {
-  const [title, setTitle] = useState("New List");
+  const [title, setTitle] = useState("");
   const changeHandler = (e) => {
     e.preventDefault();
     setTitle(e.target.value);
@@ -18,10 +21,19 @@ const NewGroceryListForm = (props) => {
     props.history.push("/");
   };
   return (
-    <div>
-      <h1>New List</h1>
-      <input type="text" value={title} onChange={changeHandler} />
-      <button onClick={clickHandler}>Create</button>
+    <div className="new-list-container">
+      <PageHeader>
+        <h1 className="page-header-title">New List</h1>
+      </PageHeader>
+      <div className="new-list-content">
+        <label>
+          Name of new list
+          <br />
+          <input type="text" value={title} onChange={changeHandler} />
+        </label>
+
+        <button onClick={clickHandler}>+</button>
+      </div>
     </div>
   );
 };
