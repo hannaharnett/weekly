@@ -1,12 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import PageHeader from "./PageHeader";
 
 import "./recipeList.scss";
 
 const RecipeList = ({ recipes, lists, addToList }) => {
   return (
-    <>
-      <h2 className="visually-hidden">All recipes</h2>
+    <div className="all-recipes-container">
+      <PageHeader>
+        <h1 className="page-header-title">All recipes</h1>
+        <div className="btn-wrap">
+          <Link to="/recipe/new">
+            <button className="list-btn">New Recipe</button>
+          </Link>
+          <Link to="/list/new">
+            <button className="list-btn">New List</button>
+          </Link>
+        </div>
+      </PageHeader>
+
       <ul className="recipe-list-ul">
         {recipes.map((recipe) => (
           <RecipeCard
@@ -17,7 +30,7 @@ const RecipeList = ({ recipes, lists, addToList }) => {
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
