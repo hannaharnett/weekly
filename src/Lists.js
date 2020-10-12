@@ -7,7 +7,7 @@ import "./lists.scss";
 const Lists = ({ lists }) => {
   const miniLists = lists.map((list) => {
     return (
-      <li key="list.id">
+      <li key={list.id}>
         <Link to={`/list/${list.id}`}>
           <h2 className="list-title">{list.title}</h2>
         </Link>
