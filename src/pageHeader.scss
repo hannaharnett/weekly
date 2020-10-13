@@ -12,6 +12,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      button {
+        text-align: left;
+      }
     }
     .page-header-title {
       font-size: 2.2rem;
