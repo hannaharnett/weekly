@@ -19,7 +19,7 @@ const NewGroceryListForm = (props) => {
       created: new Date().toLocaleDateString(),
     };
     props.saveList(newList);
-    props.history.push("/");
+    props.history.push("/lists");
   };
   return (
     <div className="new-list-container">
@@ -27,13 +27,15 @@ const NewGroceryListForm = (props) => {
         <h1 className="page-header-title">New List</h1>
       </PageHeader>
       <div className="new-list-content">
-        <label>
-          Name of new list
-          <br />
-          <input type="text" value={title} onChange={changeHandler} />
-        </label>
+        <form onSubmit={clickHandler}>
+          <label>
+            Name of new list
+            <br />
+            <input type="text" value={title} onChange={changeHandler} />
+          </label>
 
-        <button onClick={clickHandler}>+</button>
+          <button onClick={clickHandler}>+</button>
+        </form>
       </div>
     </div>
   );
