@@ -119,6 +119,7 @@ function App() {
               list={findList(routeProps.match.params.id)}
               lists={lists}
               deleteList={deleteList}
+              addToList={addToList}
               {...routeProps}
             />
           )}

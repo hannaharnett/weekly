@@ -24,6 +24,13 @@
   white-space: nowrap;
 }
 
+/**
+* Lock the scroll position by adding this class to the `<html>` element.
+*/
+.lock-scroll {
+  overflow: hidden !important;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   height: 100%;
