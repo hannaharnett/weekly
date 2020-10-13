@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import useInput from "./hooks/input-hook";
+import { v4 as uuidv4 } from "uuid";
 
 const Ingredients = ({ getIngredients }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -16,7 +17,7 @@ const Ingredients = ({ getIngredients }) => {
     e.preventDefault();
     setIngredients([
       ...ingredients,
-      { name: ingredient, qty: qty, unit: unit },
+      { name: ingredient, qty: qty, unit: unit, id: uuidv4() },
     ]);
     resetIngredient();
     reserQty();
@@ -26,7 +27,7 @@ const Ingredients = ({ getIngredients }) => {
   };
 
   const removeIngredient = (id) => {
-    const newList = ingredients.filter((item) => item.name !== id);
+    const newList = ingredients.filter((item) => item.id !== id);
 
     setIngredients(newList);
     formRef.current.querySelector("input").focus();
@@ -70,12 +71,12 @@ const Ingredients = ({ getIngredients }) => {
       </form>
       <div className="ing-list">
         <h4>Ingredients:</h4>
-        {ingredients.map(({ name, qty, unit }) => (
+        {ingredients.map(({ name, qty, unit, id }) => (
           <p key={name}>
             <label htmlFor="remove-ing" className="visually-hidden">
               {`Remove ${name} from ingredient list`}
             </label>
-            <button id="remove-ing" onClick={() => removeIngredient(name)}>
+            <button id="remove-ing" onClick={() => removeIngredient(id)}>
               -
             </button>
             {`${qty} ${unit} ${name}`}{" "}

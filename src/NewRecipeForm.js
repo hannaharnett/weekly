@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useInput from "./hooks/input-hook";
 import Ingredients from "./Ingredients";
 import PageHeader from "./PageHeader";
+import { v4 as uuidv4 } from "uuid";
 
 import "./newRecipeForm.scss";
 
@@ -16,7 +17,7 @@ const NewRecipeForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newRecipe = {
-      id: title.toLowerCase().replace(/ /g, "-"),
+      id: uuidv4(),
       title: title,
       servings: servings,
       ingredients: ingredients,

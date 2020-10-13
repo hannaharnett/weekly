@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PageHeader from "./PageHeader";
+import { v4 as uuidv4 } from "uuid";
 
 import "./newListForm.scss";
 
@@ -12,7 +13,7 @@ const NewGroceryListForm = (props) => {
   const clickHandler = (e) => {
     e.preventDefault();
     const newList = {
-      id: title.toLowerCase().replace(/ /g, "-"),
+      id: uuidv4(),
       title: title,
       recipes: [],
       created: new Date().toLocaleDateString(),
