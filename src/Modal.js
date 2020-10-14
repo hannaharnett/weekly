@@ -1,5 +1,6 @@
 import React, { useEffect, createRef } from "react";
 import { createPortal } from "react-dom";
+import { tabPress, keyListener } from "./helperFunctions";
 
 import "./modal.scss";
 
@@ -12,34 +13,16 @@ const Modal = ({ children, show, hide, role = "dialog" }) => {
   });
 
   useEffect(() => {
-    const keyListener = (e) => {
-      const listener = keyListenersMap.get(e.keyCode || e.key); //cross-browser
-      return listener && listener(e);
+    const handleKeyListener = (e) => {
+      keyListener(e, keyListenersMap);
     };
 
-    show && document.addEventListener("keydown", keyListener);
-    return () => document.removeEventListener("keydown", keyListener);
+    show && document.addEventListener("keydown", handleKeyListener);
+    return () => document.removeEventListener("keydown", handleKeyListener);
   });
 
   const handleTabPress = (e) => {
-    const focusableElements = modalRef.current.querySelectorAll(
-      'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
-    );
-
-    const firstEl = focusableElements[0];
-    const lastEl = focusableElements[focusableElements.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === firstEl) {
-        lastEl.focus();
-        return e.preventDefault();
-      }
-    } else {
-      if (document.activeElement === lastEl) {
-        firstEl.focus();
-        return e.preventDefault();
-      }
-    }
+    tabPress(e, modalRef);
   };
 
   const keyListenersMap = new Map([

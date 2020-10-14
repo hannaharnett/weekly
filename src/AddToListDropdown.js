@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { tabPress, keyListener } from "./helperFunctions";
 
 import "./addToListDropdown.scss";
 
@@ -9,30 +10,28 @@ const AddToListDropdown = ({ activatorText = "•••", items = [], onClick })
 
   const clickHandler = (e) => {
     setIsOpen(!isOpen);
+    activatorRef.current.focus();
   };
-  const keyHandler = (e) => {
-    const focusableElem = dropdownListRef.current.querySelectorAll("button");
-    // create array from node list
-    const focusable = [...focusableElem];
-    // index of current elem
-    const index = focusable.indexOf(document.activeElement);
-    let nextIndex = 0;
 
-    if (e.key === "Escape" && isOpen) {
-      setIsOpen(false);
-    }
-    if (e.keyCode === 38) {
-      // up arrow
-      e.preventDefault();
-      nextIndex = index > 0 ? index - 1 : 0;
-      focusableElem[nextIndex].focus();
-    } else if (e.keyCode === 40) {
-      // down arrow
-      e.preventDefault();
-      nextIndex = index + 1 < focusable.length ? index + 1 : index;
-      focusableElem[nextIndex].focus();
-    }
+  useEffect(() => {
+    const handleKeyListener = (e) => {
+      keyListener(e, keyListenersMap);
+    };
+
+    isOpen && document.addEventListener("keydown", handleKeyListener);
+    return () => document.removeEventListener("keydown", handleKeyListener);
+  });
+
+  const handleTabPress = (e) => {
+    tabPress(e, dropdownListRef);
   };
+
+  const keyListenersMap = new Map([
+    [27, clickHandler],
+    ["Escape", clickHandler],
+    [9, handleTabPress],
+  ]);
+
   const clickOutsideHandler = (e) => {
     if (
       dropdownListRef.current.contains(e.target) ||
@@ -71,12 +70,7 @@ const AddToListDropdown = ({ activatorText = "•••", items = [], onClick })
         <span>{activatorText}</span>
       </button>
       {isOpen && (
-        <ul
-          className="dropdown-ul"
-          ref={dropdownListRef}
-          role="list"
-          onKeyDown={keyHandler}
-        >
+        <ul className="dropdown-ul" ref={dropdownListRef} role="list">
           <li className="dropdown-item">Add to a list:</li>
           {items.map((item, index) => {
             return (
