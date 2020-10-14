@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AddToListDropdown from "./AddToListDropdown";
+import Modal from "./Modal";
+import useModal from "./hooks/useModal";
 
 import "./recipeCard.scss";
 
 const RecipeCard = (props) => {
+  const { show, toggle } = useModal();
   const { title, id } = props.recipe;
+
   const addHandler = (e) => {
     props.addMethod(e.currentTarget.dataset.id, props.recipe);
+    toggle();
   };
+
+  useEffect(() => {
+    if (show) {
+      setTimeout(() => toggle(), 2000);
+    }
+  });
+
   return (
-    <li className="recipe-card col-sm-12-12 col-md-6-12 col-lg-4-12 col-xl-3-12">
+    <div className="recipe-card">
       <Link
         to={{
           pathname: `/recipe/${id}`,
@@ -23,7 +35,10 @@ const RecipeCard = (props) => {
         <h2 className="recipe-title">{title}</h2>
       </Link>
       <AddToListDropdown items={props.lists} onClick={addHandler} />
-    </li>
+      <Modal show={show} hide={toggle}>
+        <h2>Added {title}!</h2>
+      </Modal>
+    </div>
   );
 };
 

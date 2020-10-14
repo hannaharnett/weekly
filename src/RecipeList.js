@@ -22,12 +22,12 @@ const RecipeList = ({ recipes, lists, addToList }) => {
 
       <ul className="recipe-list-ul">
         {recipes.map((recipe) => (
-          <RecipeCard
+          <li
+            className="col-sm-12-12 col-md-6-12 col-lg-4-12 col-xl-3-12"
             key={recipe.id}
-            recipe={recipe}
-            lists={lists}
-            addMethod={addToList}
-          />
+          >
+            <RecipeCard recipe={recipe} lists={lists} addMethod={addToList} />
+          </li>
         ))}
       </ul>
     </div>
