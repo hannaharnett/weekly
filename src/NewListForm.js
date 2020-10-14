@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageHeader from "./PageHeader";
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,6 +10,7 @@ const NewGroceryListForm = (props) => {
     e.preventDefault();
     setTitle(e.target.value);
   };
+
   const clickHandler = (e) => {
     e.preventDefault();
     const newList = {
@@ -21,6 +22,11 @@ const NewGroceryListForm = (props) => {
     props.saveList(newList);
     props.history.push("/lists");
   };
+
+  useEffect(() => {
+    document.querySelector("input").focus();
+  });
+
   return (
     <div className="new-list-container">
       <PageHeader>

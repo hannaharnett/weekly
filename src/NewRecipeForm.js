@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useInput from "./hooks/input-hook";
 import Ingredients from "./Ingredients";
@@ -28,6 +28,11 @@ const NewRecipeForm = (props) => {
     resetServings();
     props.history.push("/recipes");
   };
+
+  useEffect(() => {
+    document.querySelector("input").focus();
+  });
+
   return (
     <div className="new-recipe-container">
       <PageHeader>
