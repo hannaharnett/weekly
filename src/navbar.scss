@@ -10,6 +10,7 @@ nav {
   padding: 0 30px;
   @include respond-until(sm) {
     background: $lightNude;
+    justify-content: space-between;
   }
   h1.logo {
     font-size: 2.5rem;

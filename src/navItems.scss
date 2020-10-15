@@ -16,7 +16,9 @@ ul.burger-ul {
     position: fixed;
     transform: translateX(100%);
     padding: 100px 35px;
+    display: none;
     &.open {
+      display: flex;
       transform: translateX(0);
     }
     top: 0;
