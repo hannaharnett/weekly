@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PageHeader from "./PageHeader";
 import { v4 as uuidv4 } from "uuid";
 
@@ -31,6 +32,11 @@ const NewGroceryListForm = (props) => {
     <div className="new-list-container">
       <PageHeader>
         <h1 className="page-header-title">New List</h1>
+        <div className="btn-wrap">
+          <Link to="/lists" className="page-header-btn">
+            Cancel
+          </Link>
+        </div>
       </PageHeader>
       <div className="new-list-content">
         <form onSubmit={clickHandler}>
