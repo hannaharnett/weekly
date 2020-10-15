@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import AddToListDropdown from "./AddToListDropdown";
 import PageHeader from "./PageHeader";
+import Modal from "./Modal";
+import useModal from "./hooks/useModal";
 
 import "./recipe.scss";
 
 const Recipe = (props) => {
+  const { show, toggle } = useModal();
+  const openModalRef = useRef();
   const { recipe, lists } = props.location.state;
   const { id, title, ingredients, servings } = recipe;
 
@@ -12,6 +16,11 @@ const Recipe = (props) => {
     props.deleteRecipe(id);
 
     props.history.push("/recipes");
+  };
+
+  const returnFocusModalClose = () => {
+    toggle();
+    openModalRef.current.focus();
   };
 
   const handleAdd = (e) => {
@@ -25,10 +34,22 @@ const Recipe = (props) => {
           <AddToListDropdown items={lists} onClick={handleAdd} />
         </div>
         <div className="btn-wrap">
-          <button className="page-header-btn" onClick={handleDelete}>
+          <button
+            className="page-header-btn"
+            onClick={toggle}
+            ref={openModalRef}
+          >
             Delete Recipe
           </button>
         </div>
+
+        <Modal show={show} hide={returnFocusModalClose}>
+          <h2>Are you sure you want to delete this recipe?</h2>
+          <div className="modal-btns">
+            <button onClick={handleDelete}>Delete Recipe</button>
+            <button onClick={returnFocusModalClose}>Cancel</button>
+          </div>
+        </Modal>
       </PageHeader>
       <div className="recipe-content">
         <p>Servings: {servings}</p>
