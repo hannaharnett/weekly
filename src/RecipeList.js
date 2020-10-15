@@ -11,11 +11,11 @@ const RecipeList = ({ recipes, lists, addToList }) => {
       <PageHeader>
         <h1 className="page-header-title">All recipes</h1>
         <div className="btn-wrap">
-          <Link to="/recipe/new">
-            <button className="list-btn">New Recipe</button>
+          <Link to="/recipe/new" className="page-header-btn">
+            New Recipe
           </Link>
-          <Link to="/list/new">
-            <button className="list-btn">New List</button>
+          <Link to="/list/new" className="page-header-btn">
+            New List
           </Link>
         </div>
       </PageHeader>

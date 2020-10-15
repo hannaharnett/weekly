@@ -15,7 +15,7 @@
 }
 
 .recipe-title {
-  @extend .hover-links;
+  @extend .base-hover-links;
   background-image: linear-gradient(to top, $purple 50%, transparent 50%);
   font-size: 3.5rem;
   color: $darkFont;

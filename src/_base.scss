@@ -1,6 +1,6 @@
 @import "_colors";
 
-.hover-links {
+.base-hover-links {
   background-size: 200% 200%;
   background-image: linear-gradient(to top, $orange 50%, transparent 50%);
   -webkit-transition: background-position 200ms, color 200ms ease,
@@ -28,5 +28,40 @@
       border-color 200ms ease;
     transition: background-position 200ms, color 200ms ease,
       border-color 200ms ease;
+  }
+}
+
+.base-link-white {
+  @extend .base-hover-links;
+  background-image: linear-gradient(to top, $lightNude 50%, transparent 50%);
+  background-color: transparent;
+  color: $darkFont;
+  font-size: 1.1rem;
+  border: none;
+  border-bottom: 2px solid $lightNude;
+  letter-spacing: 1px;
+  text-decoration: none;
+  &:hover {
+    color: $darkFont;
+    background-image: linear-gradient(to top, $lightNude 51%, transparent 50%);
+  }
+}
+
+.base-link-color {
+  @extend .base-hover-links;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $orange;
+  color: $darkFont;
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.no-list-style {
+  list-style: none;
+  // for safari
+  li::before {
+    content: "\200B";
   }
 }

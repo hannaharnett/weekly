@@ -17,12 +17,9 @@ nav {
     font-family: "Archivo Black", sans-serif;
   }
   a {
-    @extend .hover-links;
-    color: $darkFont;
-    font-size: 1.1rem;
-    text-decoration: none;
-    letter-spacing: 1px;
+    @extend .base-link-color;
     margin-left: 25px;
+    border-bottom: none;
     @include respond-until(sm) {
       margin-left: 0;
     }

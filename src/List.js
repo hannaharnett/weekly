@@ -47,11 +47,15 @@ const List = (props) => {
       <PageHeader>
         <h2 className="page-header-title">{list.title}</h2>
         <div className="btn-wrap">
-          <button onClick={toggle} className="list-btn" ref={openModalRef}>
+          <button
+            onClick={toggle}
+            className="page-header-btn"
+            ref={openModalRef}
+          >
             Delete List
           </button>
           {list.recipes.length > 0 && (
-            <button onClick={generateShoppingList} className="list-btn">
+            <button onClick={generateShoppingList} className="page-header-btn">
               Generate shopping list
             </button>
           )}
@@ -59,12 +63,8 @@ const List = (props) => {
           <Modal show={show} hide={returnFocusModalClose}>
             <h2>Are you sure you want to delete this list?</h2>
             <div className="modal-btns">
-              <button onClick={deleteHandler} className="list-btn">
-                Delete List
-              </button>
-              <button onClick={returnFocusModalClose} className="list-btn">
-                Cancel
-              </button>
+              <button onClick={deleteHandler}>Delete List</button>
+              <button onClick={returnFocusModalClose}>Cancel</button>
             </div>
           </Modal>
         </div>
@@ -73,12 +73,14 @@ const List = (props) => {
         {list.recipes.length > 0 ? (
           <ul className="list-ul">
             {list.recipes.map((recipe) => (
-              <RecipeCard
-                key={recipe.id}
-                recipe={recipe}
-                lists={lists}
-                addMethod={addToList}
-              />
+              <li>
+                <RecipeCard
+                  key={recipe.id}
+                  recipe={recipe}
+                  lists={lists}
+                  addMethod={addToList}
+                />
+              </li>
             ))}
           </ul>
         ) : (

@@ -23,7 +23,7 @@ const Recipe = (props) => {
           <AddToListDropdown items={lists} onClick={handleAdd} />
         </div>
         <div className="btn-wrap">
-          <button className="list-btn" onClick={handleDelete}>
+          <button className="page-header-btn" onClick={handleDelete}>
             Delete Recipe
           </button>
         </div>

@@ -5,7 +5,7 @@
   background-color: $orange;
 }
 .all-lists-ul {
-  list-style: none;
+  @extend .no-list-style;
   padding: 40px 55px;
   @include respond-until(sm) {
     padding: 20px 30px;
@@ -14,7 +14,7 @@
     padding: 10px 0;
 
     .list-title {
-      @extend .hover-links;
+      @extend .base-hover-links;
       font-size: 3.5rem;
       color: $darkFont;
       text-decoration: underline;

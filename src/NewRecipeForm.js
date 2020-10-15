@@ -39,9 +39,9 @@ const NewRecipeForm = (props) => {
         <h2 className="page-header-title">Add Recipe</h2>
         <div className="btn-wrap">
           <Link to="/recipes">
-            <button className="list-btn">Cancel</button>
+            <button className="page-header-btn">Cancel</button>
           </Link>
-          <button onClick={handleSubmit} className="list-btn">
+          <button onClick={handleSubmit} className="page-header-btn">
             Add recipe
           </button>
         </div>

@@ -16,14 +16,13 @@ footer {
     text-align: center;
   }
   ul.footer-ul {
-    list-style: none;
+    @extend .no-list-style;
     li a {
-      @extend .hover-links;
+      @extend .base-link-color;
+      border-bottom: none;
       margin: 0 20px;
       font-family: "Archivo Black", sans-serif;
       font-size: 1.8rem;
-      color: $darkFont;
-      text-decoration: none;
     }
   }
   .footer-credits {
@@ -33,9 +32,7 @@ footer {
       text-align: center;
     }
     a {
-      @extend .hover-links;
-      text-decoration: none;
-      color: $darkFont;
+      @extend .base-link-color;
       display: inline-flex;
       justify-content: flex-end;
       align-items: center;

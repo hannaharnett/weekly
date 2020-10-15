@@ -1,4 +1,4 @@
-@import "_colors";
+@import "_base";
 
 .all-recipes-container {
   background-color: $orange;
@@ -6,10 +6,6 @@
   .recipe-list-ul {
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
-    // for safari
-    li::before {
-      content: "\200B";
-    }
+    @extend .no-list-style;
   }
 }

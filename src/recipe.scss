@@ -24,10 +24,6 @@
   }
 
   .recipe-ul {
-    list-style: none;
-    // for safari
-    li::before {
-      content: "\200B";
-    }
+    @extend .no-list-style;
   }
 }
