@@ -8,9 +8,7 @@ const Lists = ({ lists }) => {
   const miniLists = lists.map((list) => {
     return (
       <li key={list.id}>
-        <Link to={`/list/${list.id}`}>
-          <h2 className="list-title">{list.title}</h2>
-        </Link>
+        <Link to={`/list/${list.id}`}>{list.title}</Link>
         <p>{`Incudes ${list.recipes.length} recipes`}</p>
       </li>
     );

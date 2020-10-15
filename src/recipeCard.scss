@@ -15,16 +15,12 @@
 }
 
 .recipe-title {
-  @extend .base-hover-links;
-  background-image: linear-gradient(to top, $purple 50%, transparent 50%);
+  @extend .base-link-white;
+  border-bottom: none;
   font-size: 3.5rem;
   color: $darkFont;
   text-decoration: underline;
   @include respond-until(md) {
     font-size: 2.2rem;
-  }
-  &:hover {
-    color: white;
-    background-image: linear-gradient(to top, $purple 51%, transparent 50%);
   }
 }

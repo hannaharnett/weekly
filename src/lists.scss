@@ -13,16 +13,15 @@
   li {
     padding: 10px 0;
 
-    .list-title {
-      @extend .base-hover-links;
+    a {
+      @extend .base-link-white;
+      border-bottom: none;
       font-size: 3.5rem;
       color: $darkFont;
       text-decoration: underline;
+      width: 100%;
       @include respond-until(md) {
         font-size: 2.2rem;
-      }
-      &:hover {
-        color: white;
       }
     }
 
