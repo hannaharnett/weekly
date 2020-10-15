@@ -17,9 +17,10 @@ const RecipeCard = (props) => {
 
   useEffect(() => {
     if (show) {
-      setTimeout(() => toggle(), 2000);
+      const timeout = setTimeout(() => toggle(), 2000);
+      return () => clearTimeout(timeout);
     }
-  });
+  }, [show]);
 
   return (
     <div className="recipe-card">
