@@ -10,6 +10,8 @@ const Recipe = (props) => {
 
   const handleDelete = () => {
     props.deleteRecipe(id);
+
+    props.history.push("/recipes");
   };
 
   const handleAdd = (e) => {
