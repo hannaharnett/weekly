@@ -31,7 +31,7 @@ const Footer = () => {
             icons8.com
             <img
               src="https://img.icons8.com/material-rounded/18/000000/external-link.png"
-              alt=""
+              alt="external-link-icon"
             />
           </a>
           <span className="visually-hidden" id="new-window">
