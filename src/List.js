@@ -86,11 +86,11 @@ const List = (props) => {
         ) : (
           <div className="no-recipes">
             <h2>No recipes yet!</h2>
-            <Link to="/recipes">
-              <button className="list-btn">Browse recipes</button>
+            <Link to="/recipes" className="no-recipes-btn">
+              Browse recipes
             </Link>
-            <Link to="/recipe/new">
-              <button className="list-btn">Add new recipe</button>
+            <Link to="/recipe/new" className="no-recipes-btn">
+              Add new recipe
             </Link>
           </div>
         )}

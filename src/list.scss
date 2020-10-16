@@ -38,14 +38,19 @@
     }
   }
   .no-recipes {
-    padding: 50px;
-    button {
-      margin-top: 10px;
+    h2 {
+      margin-bottom: 20px;
+    }
+    min-height: 200px;
+    margin: 55px;
+    a {
+      @extend .base-link-white;
+      margin: 4px 45px 3px 0;
     }
     @include respond-until(sm) {
       display: flex;
       flex-direction: column;
-      padding: 30px;
+      margin: 30px;
     }
   }
 }
