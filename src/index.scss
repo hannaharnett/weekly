@@ -1,6 +1,6 @@
-@import "_colors";
-@import "_breakpointMixins";
-@import "_grid";
+@import "./assets/sass/base";
+@import "./assets/sass/breakpointMixins";
+@import "./assets/sass/grid";
 
 * {
   box-sizing: border-box;

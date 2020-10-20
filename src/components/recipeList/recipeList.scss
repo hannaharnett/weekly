@@ -1,0 +1,11 @@
+@import "../../assets/sass/base";
+
+.all-recipes-container {
+  background-color: $orange;
+
+  .recipe-list-ul {
+    display: flex;
+    flex-wrap: wrap;
+    @extend .no-list-style;
+  }
+}

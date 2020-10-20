@@ -1,0 +1,32 @@
+@import "../../assets/sass/base";
+@import "../../assets/sass/breakpointMixins";
+
+.all-lists-container {
+  background-color: $orange;
+}
+.all-lists-ul {
+  @extend .no-list-style;
+  padding: 40px 55px;
+  @include respond-until(sm) {
+    padding: 20px 30px;
+  }
+  li {
+    padding: 10px 0;
+
+    a {
+      @extend .base-link-white;
+      border-bottom: none;
+      font-size: 3.5rem;
+      color: $darkFont;
+      text-decoration: underline;
+      width: 100%;
+      @include respond-until(md) {
+        font-size: 2.2rem;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}

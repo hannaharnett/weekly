@@ -1,0 +1,49 @@
+@import "../../assets/sass/base";
+@import "../../assets/sass/breakpointMixins";
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  letter-spacing: 1px;
+  height: 200px;
+  background-color: $pink;
+  margin-top: 5%;
+  padding: 3%;
+  @include respond-until(sm) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  ul.footer-ul {
+    @extend .no-list-style;
+    li a {
+      @extend .base-link-color;
+      border-bottom: none;
+      margin: 0 20px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 1.8rem;
+    }
+  }
+  .footer-credits {
+    text-align: right;
+    font-size: 1.1rem;
+    @include respond-until(sm) {
+      text-align: center;
+    }
+    a {
+      @extend .base-link-color;
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: center;
+      img {
+        width: 16px;
+      }
+    }
+
+    .footer-logo {
+      font-size: 2.5rem;
+      font-family: "Archivo Black", sans-serif;
+    }
+  }
+}

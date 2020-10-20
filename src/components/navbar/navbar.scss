@@ -1,0 +1,27 @@
+@import "../../assets/sass/base";
+@import "../../assets/sass/breakpointMixins";
+
+nav {
+  height: 100px;
+  margin-bottom: 0;
+  background-color: $lightNude;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  @include respond-until(sm) {
+    background: $lightNude;
+    justify-content: space-between;
+  }
+  h1.logo {
+    font-size: 2.5rem;
+    font-family: "Archivo Black", sans-serif;
+  }
+  a {
+    @extend .base-link-color;
+    margin-left: 25px;
+    border-bottom: none;
+    @include respond-until(sm) {
+      margin-left: 0;
+    }
+  }
+}

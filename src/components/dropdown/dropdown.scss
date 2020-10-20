@@ -1,0 +1,65 @@
+@import "../../assets/sass/base";
+
+.dropdown-wrap {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  color: $purple;
+  border: 2px solid $purple;
+  border-radius: 50%;
+  margin: 10px;
+  transition: 200ms ease-in-out;
+  span {
+    display: inline-block;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  &:hover {
+    color: white;
+    background-color: $purple;
+    cursor: pointer;
+  }
+}
+
+.dropdown-ul {
+  @extend .no-list-style;
+  position: absolute;
+  width: 180px;
+  top: 10px;
+  left: -180px;
+  padding: 10px 0;
+  border-color: $lightNude;
+  border-radius: 10px;
+  background-color: $lightNude;
+  z-index: 999;
+  -webkit-box-shadow: 0 0 4px 1px $darkFont;
+  -moz-box-shadow: 0 0 4px 1px $darkFont;
+  box-shadow: 0 0 4px 1px $darkFont;
+  li:first-of-type {
+    padding: 10px 30px;
+    text-decoration: underline;
+    font-size: 1.1rem;
+  }
+
+  button {
+    border: 1px solid transparent;
+    background-color: $lightNude;
+    width: 100%;
+    padding: 10px 30px;
+    color: $darkFont;
+    font-size: 1.1rem;
+    text-align: left;
+    &:hover {
+      background-color: $purple;
+      color: $lightNude;
+      cursor: pointer;
+    }
+  }
+}
