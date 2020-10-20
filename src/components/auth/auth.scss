@@ -1,0 +1,66 @@
+@import "../../assets/sass/base";
+@import "../../assets/sass/breakpointMixins";
+
+.auth-container {
+  background-color: $orange;
+  .auth-content {
+    padding: 40px 55px;
+    @include respond-until(sm) {
+      padding: 30px;
+    }
+  }
+}
+
+.auth-form {
+  max-width: 900px;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  color: $darkFont;
+  padding: 30px 0;
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form:nth-child(1) {
+    margin-bottom: 30px;
+  }
+
+  input {
+    height: 40px;
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $darkFont;
+    margin-bottom: 20px;
+    padding-left: 5px;
+
+    &:focus {
+      outline: none;
+      border: 2px solid $darkFont;
+    }
+  }
+  button {
+    background-color: $lightNude;
+    border: 2px solid transparent;
+    font-size: 1.1rem;
+    padding: 12px;
+    margin-top: 20px;
+    width: 40%;
+    transition: 200ms ease-in-out;
+    &:hover {
+      border-color: $darkFont;
+      cursor: pointer;
+    }
+    @include respond-until(sm) {
+      width: 100%;
+    }
+  }
+  p {
+    font-size: 1.1rem;
+    a {
+      @extend .base-link-white;
+    }
+  }
+}
