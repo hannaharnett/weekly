@@ -31,7 +31,7 @@ const NewRecipeForm = (props) => {
 
   useEffect(() => {
     document.querySelector("input").focus();
-  });
+  }, []);
 
   return (
     <div className="new-recipe-container">
