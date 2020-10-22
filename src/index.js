@@ -4,11 +4,12 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./components/app/App";
 import * as serviceWorker from "./serviceWorker";
+import AppProviders from "./context/AppProviders";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AppProviders>
     <App />
-  </React.StrictMode>,
+  </AppProviders>,
   document.getElementById("root")
 );
 
