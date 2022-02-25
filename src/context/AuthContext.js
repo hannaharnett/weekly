@@ -21,7 +21,7 @@ const AuthProvider = (props) => {
       null,
       { headers: { "x-auth-token": token } }
     );
-    if (tokenRes.data) {
+    if (tokenRes) {
       const userRes = await axios.get("http://localhost:5000/api/user/", {
         headers: { "x-auth-token": token },
       });
@@ -35,18 +35,14 @@ const AuthProvider = (props) => {
 
   const authLogin = async (email, password) => {
     try {
-      const loginRes = await axios.post(
-        "http://localhost:5000/api/user/login",
-        {
-          email,
-          password,
-        }
-      );
+      const loginRes = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
       setUserData({ token: loginRes.data.token, user: loginRes.data.user });
       localStorage.setItem("auth-token", loginRes.data.token);
     } catch (e) {
-      e.response.data.msg &&
-        setUserData({ ...userData, error: e.response.data.msg });
+      e.response && setUserData({ ...userData, error: e.response.data.msg });
     }
   };
 
@@ -62,15 +58,12 @@ const AuthProvider = (props) => {
   const authSignup = async (email, password, passwordCheck, displayName) => {
     try {
       const newUser = { email, password, passwordCheck, displayName };
-      await axios.post("http://localhost:5000/api/user/signup", newUser);
+      await axios.post("http://localhost:5000/signup", newUser);
       // login user automatically when registered
-      const loginRes = await axios.post(
-        "http://localhost:5000/api/user/login",
-        {
-          email,
-          password,
-        }
-      );
+      const loginRes = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
       setUserData({ token: loginRes.data.token, user: loginRes.data.user });
       localStorage.setItem("auth-token", loginRes.data.token);
     } catch (e) {

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { useUser } from "../../context/UserContext";
 import PageHeader from "../pageHeader/PageHeader";
 import useInput from "./hooks/useInput";
 
@@ -10,17 +12,33 @@ const SignUp = () => {
   const [password, userPassword] = useInput({ type: "password" });
   const [passwordCheck, userPasswordCheck] = useInput({ type: "password" });
   const [displayName, userDisplayName] = useInput({ type: "text" });
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
+
+  const { authSignup, userData } = useAuth();
+  let authError = userData.error;
+  const user = useUser();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    authSignup(email, password, passwordCheck, displayName);
   };
+
+  useEffect(() => {
+    user && history.push("/");
+  });
+
+  useEffect(() => {
+    setError(authError);
+  });
+
   return (
     <div className="auth-container">
       <PageHeader>
         <h2 className="page-header-title">Sign up</h2>
       </PageHeader>
       <div className="auth-content">
+        {error && <p>{error}</p>}
         <div className="auth-form">
           <form onSubmit={handleSubmit}>
             <label>

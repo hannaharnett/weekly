@@ -1,0 +1,15 @@
+//TODO
+
+- set focus on page content when new page is loaded
+- move font-sizes to base and clear them everywhere
+- Add skip-link
+
+//COMMIT
+
+
+
+//NEW FEATURES TO ADD
+
+- Edit recipe
+- Delete recipe from list
+- WRITE TESTS!!!!!

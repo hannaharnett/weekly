@@ -16,7 +16,8 @@ nav {
     font-size: 2.5rem;
     font-family: "Archivo Black", sans-serif;
   }
-  a {
+  a,
+  button {
     @extend .base-link-color;
     margin-left: 25px;
     border-bottom: none;
